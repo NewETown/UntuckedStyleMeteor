@@ -1,4 +1,4 @@
-$(document).ready(function() {
+Template.appBody.rendered = function() {
     var lockedBar = $(".untucked-header-list");
 //    var leftCard = $('#left-card');
 //    var rightCard = $('#right-card');
@@ -6,7 +6,6 @@ $(document).ready(function() {
 
     $(window).scroll(function() {
         if($(window).scrollTop() > 177) {
-            console.log("Locking");
             lockedBar.addClass("locked shadow-2");
 //            leftCard.addClass("locked-left-card");
 //            leftCard.css('width', width);
@@ -51,7 +50,7 @@ $(document).ready(function() {
             console.log("Sound off");
         }, ms);
     });
-});
+}
 
 var inked = function(pageX, pageY, parent, color) {
     var ink, d, x, y;
