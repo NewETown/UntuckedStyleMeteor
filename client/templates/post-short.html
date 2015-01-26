@@ -1,11 +1,11 @@
 <template name="postShort">
-    <a href="#" class="post shadow-0">
+    <a href="/{{category}}/{{url}}" class="post shadow-0" data-post-id="{{_id}}">
         <div class="image-box">
         </div>
         <div class="content-box">
-            <h2>Test stuff</h2>
-            <p>Some sample text and content and stuff blah blah</p>
-            <p class="date">EC - 1/01/2015</p>
+            <h2>{{title}}</h2>
+            <p>{{short}}</p>
+            <p class="date">{{author}} - {{post_date}}</p>
         </div>
     </a>
 </template>

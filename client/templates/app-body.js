@@ -1,20 +1,12 @@
 Template.appBody.rendered = function() {
+    var BASE_URL = window.location.origin;
     var lockedBar = $(".untucked-header-list");
-//    var leftCard = $('#left-card');
-//    var rightCard = $('#right-card');
-//    var width = $('#left-card').width();
-
+    
     $(window).scroll(function() {
-        if($(window).scrollTop() > 177) {
+        if($(window).scrollTop() > 175) {
             lockedBar.addClass("locked shadow-2");
-//            leftCard.addClass("locked-left-card");
-//            leftCard.css('width', width);
-//            rightCard.addClass("locked-right-card");
-//            rightCard.css('width', width);
         } else {
             lockedBar.removeClass("locked shadow-2");
-//            leftCard.removeClass("locked-left-card");
-//            rightCard.removeClass("locked-right-card");
         }
     });
 
@@ -35,24 +27,26 @@ Template.appBody.rendered = function() {
     });
 
     $('a').click(function(e) {
-        e.preventDefault();
-
-        var el = $(e.target);
-
-        var re = new RegExp('\\d*\\.\\d*', 'g');
-
-        var ms = re.exec($(e.target).parent().find('.animate').css('animation-duration'));
-        ms = ms[0] * 1000;
-        console.log(ms);
-
-        setTimeout(function(){
-            // window.location = "http://google.com";
-            console.log("Sound off");
-        }, ms);
+//        Old code to detect click events
+//        e.preventDefault();
+//
+//        var el = $(e.target);
+//
+//        var re = new RegExp('\\d*\\.\\d*', 'g');
+//
+//        var ms = re.exec($(e.target).parent().find('.animate').css('animation-duration'));
+//        ms = ms[0] * 1000;
+//        console.log(ms);
+//
+//        setTimeout(function(){
+//            console.log("Sound off");
+//        }, ms);
+        
+        hrefCheck($(e.currentTarget));
     });
 }
 
-var inked = function(pageX, pageY, parent, color) {
+function inked(pageX, pageY, parent, color) {
     var ink, d, x, y;
 
     //create .ink element if it doesn't exist

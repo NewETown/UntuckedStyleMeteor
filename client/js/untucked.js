@@ -1,21 +1,11 @@
 $(document).ready(function() {
     var lockedBar = $(".untucked-header-list");
-//    var leftCard = $('#left-card');
-//    var rightCard = $('#right-card');
-//    var width = $('#left-card').width();
 
     $(window).scroll(function() {
         if($(window).scrollTop() > 177) {
-            console.log("Locking");
             lockedBar.addClass("locked shadow-2");
-//            leftCard.addClass("locked-left-card");
-//            leftCard.css('width', width);
-//            rightCard.addClass("locked-right-card");
-//            rightCard.css('width', width);
         } else {
             lockedBar.removeClass("locked shadow-2");
-//            leftCard.removeClass("locked-left-card");
-//            rightCard.removeClass("locked-right-card");
         }
     });
 
