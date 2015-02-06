@@ -8,3 +8,5 @@ meteor-platform
 insecure
 iron:router
 meteorhacks:ssr
+underscore
+accounts-password

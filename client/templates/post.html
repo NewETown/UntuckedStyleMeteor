@@ -1,8 +1,10 @@
 <template name="post">
-    <div class="post long-post shadow-0">
+    <div class="post shadow-0 card-post-transition">
+        <img src="{{image_url}}" class="header-img" />
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="long-post col-md-12 col-sm-12 col-xs-12">
                 <h1>{{title}}</h1>
+                <p>{{title_image}}</p>
                 <p>{{author}}</p>
                 <p>{{category}}</p>
                 <p>{{{content}}}</p>

@@ -1,5 +1,4 @@
-Template.post.helpers({
-    post: function() {
-        return this;
-    }
-});
+Template.post.rendered = function() {
+    scrollToTop();
+    transition(["card-post-transition", "sidebar-transition"]);
+}

@@ -1,9 +1,4 @@
 Template.postList.rendered = function() {
-    setupClicks();
+    scrollToTop();
+    transition(["card-post-short-transition", "sidebar-transition"]);
 }
-
-Template.postList.helpers({
-    posts: function() {
-        return this;
-    }
-});

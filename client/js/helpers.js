@@ -1,5 +1,17 @@
 /*
- * UI Logic
+ * Basic helpers
+ */
+trimInput = function(val) {
+    // For whitespace
+    return val.replace(/^\s*|\s*$/g, "");
+}
+
+isValidPassword = function(val) {
+    return val.length >= 6 ? true : false; 
+}
+
+/*
+ * UI Animation
  */
 inked = function(pageX, pageY, parent, color) {
     var ink, d, x, y;
@@ -29,6 +41,26 @@ inked = function(pageX, pageY, parent, color) {
     ink.css({top: y+'px', left: x+'px'}).addClass("animate");
 }
 
+transition = function(arr) {
+    var timeout = 250;
+    var incr = 1;
+    _.each(arr, function(cl) {
+        var el_list = $('.' + cl);
+        _.each(el_list, function(el) {
+            setTimeout(function() {
+                $(el).removeClass(cl);
+            }, timeout);
+            timeout += timeout;
+        });
+        timeout = 250;
+        incr = 1;
+    });
+}
+
+scrollToTop = function() {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+}
+
 /*
  * Document switching logic
  */
@@ -52,7 +84,6 @@ hrefCheck = function(el) {
 
 grabContent = function(href) {
     // Grab the post
-    console.log('href: ' + href);
     $.ajax(href).done(function(d) {
                 swapContent(d);
             });
@@ -61,7 +92,7 @@ grabContent = function(href) {
 
 swapContent = function(data) {
     $('.primary-content').html(data);
-    setupClicks();
+    //setupClicks();
 }
 
 updatePostList = function() {
