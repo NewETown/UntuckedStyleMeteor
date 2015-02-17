@@ -54,19 +54,16 @@ Meteor.startup(function () {
         });
     }
     
-    if(Meteor.users.length == 0) {
+    if(Meteor.users.find().count() == 0) {
+        console.log('No users');
         Accounts.createUser({
-            username: "Atomyk",
+            username: "everett@mentaltangent.net",
             password: "pa$$w0rd",
             email: "everett@mentaltangent.net",
-            profile: {name: "Everett"}
-        }, function(err) {
-            // suspend account creation
-            if (err)
-                console.log(err);
-            else
-                console.log('Create user callback');
+            profile: {name: "Everett", is_admin: true}
         });
+    } else {
+        console.log("There is a user");
     }
     
     Accounts.config({

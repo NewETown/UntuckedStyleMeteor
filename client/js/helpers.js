@@ -42,7 +42,7 @@ inked = function(pageX, pageY, parent, color) {
 }
 
 transition = function(arr) {
-    var timeout = 250;
+    var timeout = 200;
     var incr = 1;
     _.each(arr, function(cl) {
         var el_list = $('.' + cl);
@@ -52,7 +52,7 @@ transition = function(arr) {
             }, timeout);
             timeout += timeout;
         });
-        timeout = 250;
+        timeout = 200;
         incr = 1;
     });
 }

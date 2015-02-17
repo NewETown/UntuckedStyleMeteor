@@ -1,13 +1,14 @@
 <template name="appBody">
-    
+    <div id="fb-root"></div>
     {{> navbar }}
-    
-    <div class="container-fluid">
+    <div class="container content-container">
         <div class="row">
-            <div class="col-lg-7 col-lg-offset-1 col-md-12 primary-content">
+<!--            <div class="col-lg-4 col-lg-offset-3 col-md-12 col-sm-12 col-xs-12 primary-content">-->
+            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 primary-content">
                 {{> yield}}
             </div>
-            <div class="col-lg-3 visible-lg visible-xl side-content">
+<!--            <div class="col-lg-2 visible-lg visible-xl side-content">-->
+            <div class="col-lg-4 visible-lg visible-xl side-content">
                 {{> yield "sidebar"}}
             </div>
         </div>

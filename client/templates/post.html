@@ -2,13 +2,21 @@
     <div class="post shadow-0 card-post-transition">
         <img src="{{image_url}}" class="header-img" />
         <div class="row">
-            <div class="long-post col-md-12 col-sm-12 col-xs-12">
-                <h1>{{title}}</h1>
-                <p>{{title_image}}</p>
-                <p>{{author}}</p>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="title-row">
+                    <h1>{{title}}</h1>
+                    <p class="author-row">{{author}} - {{post_date}}</p>
+                    <div class="fb-like" data-href="http://localhost:3000" data-share="false" data-width="350" data-show-faces="false"></div>
+                </div>
+                <div class="long-post-content" style="margin-top: 10px;">
+                    <p>{{{content}}}</p>
+                </div>
                 <p>{{category}}</p>
-                <p>{{{content}}}</p>
             </div>
         </div>
+        {{> facebookComments}}
+    </div>
+    <div class="related-articles">
+        {{> relatedArticles}}
     </div>
 </template>
