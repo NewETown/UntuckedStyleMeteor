@@ -1,5 +1,7 @@
 Template.facebookComments.rendered = function() {
-    
+    setTimeout(function() {
+        FB.XFBML.parse(document.getElementById('fbComments'));
+    }, 100);
 };
 
 Template.facebookComments.helpers({

@@ -50,7 +50,8 @@ transition = function(arr) {
             setTimeout(function() {
                 $(el).removeClass(cl);
             }, timeout);
-            timeout += timeout;
+            if(timeout < 1000)
+                timeout += timeout;
         });
         timeout = 200;
         incr = 1;

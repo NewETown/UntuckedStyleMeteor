@@ -1,7 +1,62 @@
-<template name="manage_posts">
+<template name="managePosts">
     <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <h1>Post Management</h1>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h2>Post Management (creation)</h2>
+        </div>
+    </div>
+    <div class="post-edit">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3 class="inline">Add post to </h3>
+                <select id="post-category">
+                    <option selected>PICK ONE</option>
+                    {{#each getCategories}}
+                        <option value="{{.}}">{{.}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3>Title</h3>
+                <textarea id="post-title" placeholder="Post Title"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3>Background Picture URL</h3>
+                <textarea id="post-background-picture" placeholder="http://someawesomepicture.jpg"></textarea>
+                <img class="img-preview img-responsive" src=""/>
+                <p class="url-error">Please enter a fully-qualified URL!</p>
+                <p class="img-error">Error fetching image!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3>Short Description</h3>
+                <textarea id="post-short" placeholder="Short Description" maxlength="140"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3>Content</h3>
+                <textarea id="post-content" placeholder="Post Content"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3>Tags</h3>
+                <div class="tags">
+                    <textarea class="tag" placeholder="Tag"></textarea>
+                    <textarea class="tag" placeholder="Tag"></textarea>
+                    <textarea class="tag" placeholder="Tag"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                <button id="submit" class="shadow-0 raised-button">Submit</button>
+            </div>
         </div>
     </div>
 </template>

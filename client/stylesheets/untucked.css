@@ -39,10 +39,6 @@ body {
     font-weight: normal;
 }
 
-.paperize.container-fluid > .row:last-child {
-    padding-bottom: 30px;
-}
-
 .divider {
     padding-bottom: 20px;
 }
@@ -355,15 +351,6 @@ li a {
     margin-right: 0;
 }
 
-/*
-.content-box {
-    display: inline-block;
-    left: 1.5em;
-    padding-top: 2em;
-    background: inherit;
-}
-*/
-
 .ripple-wrapper {
     position: absolute;
     top: 0;
@@ -375,6 +362,94 @@ li a {
     border-radius: 2px;
 }
 
+/* Admin Styles */
+/* This lines the selector up to the first title */
+.post-edit .inline {
+    display: inline-block;
+}
+
+.post-edit select {
+    -moz-appearance:button;
+    -webkit-appearance:button;
+    border-radius: 0px;
+    border: none;
+    font-size: 20px;
+    font-weight: 300;
+    margin-left: .2em;
+    padding-left: .5em;
+    padding-right: .5em;
+    /* background-color: transparent; Not sure if I'm into this */
+}
+
+.post-edit .img-preview {
+    margin-top: .2em;
+}
+
+.post-edit .img-error, .post-edit .url-error {
+    text-align: center;
+    color: red;
+    display: none;
+}
+
+.post-edit textarea {
+    width: 100%;
+    height: auto;
+    border: 1px solid transparent;
+    resize: none;
+    overflow: auto;
+    padding: 5px;
+    height: 40px;
+    text-align: center;
+    font-size: 20px;
+}
+
+/*
+.post-edit textarea::-moz-placeholder,
+.post-edit textarea:-ms-input-placeholder,
+*/
+.post-edit textarea::-webkit-input-placeholder {
+    text-align: center;
+    top: 30%;
+    position: relative;
+    font-size: 14px;
+}
+
+textarea#post-background-picture {
+    font-size: 14px;
+}
+
+textarea#post-short {
+    height: 4em;
+    text-align: left;
+    font-size: 14px;
+}
+
+textarea#post-content {
+    height: 25em;
+    text-align: left;
+    font-size: 14px;
+}
+
+.post-edit .tags textarea {
+    width: 33%;
+    display: inline-block;
+}
+
+.post-edit .add-post {
+    
+}
+
+.post-edit button {
+    margin-top: .2em;
+    border: none;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.post-edit .row:last-of-type {
+    margin-bottom: 3em;
+}
+
 /* BOOTSTRAP OVERRIDES */
 a:hover {
     text-decoration: none;
@@ -384,10 +459,6 @@ a:hover {
 a:focus {
     text-decoration: none;
     color: #212121;
-}
-
-.container-fluid {
-    height: 100%;
 }
 
 .navbar {

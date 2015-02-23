@@ -37,16 +37,16 @@ Meteor.startup(function () {
           }
         ];
 
-        var timestamp = (new Date()).getTime();
+        var timestamp = Date.now();
         _.each(data, function(post) {
           Posts.insert({
                         title: post.title,
                         author: post.author,
                         short: post.short,
                         content: post.content,
-                        post_date: post.post_date,
+                        post_date: timestamp,
                         spotlight: post.spotlight,
-                        url: post.url,
+                        url: encodeURIComponent(post.title.toLowerCase()),
                         category: post.category,
                         tags: post.tags,
                         image_url: post.image_url
@@ -55,15 +55,12 @@ Meteor.startup(function () {
     }
     
     if(Meteor.users.find().count() == 0) {
-        console.log('No users');
         Accounts.createUser({
             username: "everett@mentaltangent.net",
             password: "pa$$w0rd",
             email: "everett@mentaltangent.net",
             profile: {name: "Everett", is_admin: true}
         });
-    } else {
-        console.log("There is a user");
     }
     
     Accounts.config({

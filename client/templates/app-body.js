@@ -24,3 +24,12 @@ Template.appBody.rendered = function() {
 //        hrefCheck($(e.currentTarget));
     });
 }
+
+Template.appBody.helpers({
+    isAdmin: function() {
+        if(Meteor.user() && Meteor.user().profile.is_admin)
+            return true;
+        
+        return false;
+    }
+});
