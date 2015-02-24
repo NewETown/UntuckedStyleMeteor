@@ -1,5 +1,6 @@
-Template.managePosts.rendered = function() {
+Template.addPost.rendered = function() {
     var FETCHING_PICTURE = false;
+    window._POST_ID = null;
     
     $('#post-background-picture').focusout(function(e) {
         var url = e.target.value;
@@ -28,7 +29,7 @@ Template.managePosts.rendered = function() {
     });
 }
 
-Template.managePosts.events({
+Template.addPost.events({
     'click #submit': function() {
         var newPost = {};
         
@@ -44,19 +45,7 @@ Template.managePosts.events({
         newPost["spotlight"] = false; // Not in use
         
         if(validate(newPost)) {
-            console.log('Submit');
-            Posts.insert({
-                title: newPost.title,
-                author: newPost.author,
-                short: newPost.short,
-                content: newPost.content,
-                post_date: newPost.post_date,
-                spotlight: newPost.spotlight,
-                url: newPost.url,
-                category: newPost.category,
-                tags: newPost.tags,
-                image_url: newPost.image_url
-            });
+            Meteor.call('postUpsert', window._POST_ID, newPost);
             resetEverything();
         } else {
             console.log("ERROR: Invalid post");
@@ -64,7 +53,7 @@ Template.managePosts.events({
     }
 });
 
-Template.managePosts.helpers({
+Template.addPost.helpers({
     getCategories: function() {
         // Eventually this should query the DB but with only 4 it doesn't matter
         var categories = ["BASICS", "CLOTHES", "DRINKS", "LIFE"];
@@ -74,33 +63,6 @@ Template.managePosts.helpers({
 
 function setImage(url) {
     $('.img-preview').attr('src', url);
-}
-
-function validate(post) {
-    
-    // TODO: Change this to return a list of errors so I can display that list
-    if(!post.title)
-        return false;
-    
-    if(!post.author)
-        return false;
-    
-    if(post.content.length < 400)
-        return false;
-    
-    if(post.url === null)
-        return false;
-    
-    if(post.category === "pick one")
-        return false;
-    
-    if(post.image_url === '')
-        return false;
-    
-    if(post.tags.length < 2)
-        return false;
-    
-    return true;
 }
 
 function getTags() {
@@ -119,4 +81,5 @@ function toUrl(url) {
 function resetEverything() {
     $('textarea').each(function() { this.value = ''; });
     $('.img-preview').attr('src','');
+    window._POST_ID = null;
 }

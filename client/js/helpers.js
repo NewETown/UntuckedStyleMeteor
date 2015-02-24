@@ -102,3 +102,31 @@ updatePostList = function() {
             });
     return false;
 }
+
+/* Admin Helpers */
+validate = function(post) {
+    
+    // TODO: Change this to return a list of errors so I can display that list
+    if(!post.title)
+        return false;
+    
+    if(!post.author)
+        return false;
+    
+    if(post.content.length < 400)
+        return false;
+    
+    if(post.url === null)
+        return false;
+    
+    if(post.category === "pick one")
+        return false;
+    
+    if(post.image_url === '')
+        return false;
+    
+    if(post.tags.length < 2)
+        return false;
+    
+    return true;
+}
