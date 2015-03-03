@@ -44,4 +44,9 @@ Template.navbar.rendered = function() {
 
         inked(x, y, parent, 'light-gray');
     });
+    
+    $('nav a').click(function() {
+        scrollToTop();
+        transition(["card-post-short-transition"]);
+    });
 }

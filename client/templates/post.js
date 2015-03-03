@@ -3,6 +3,12 @@ Template.post.rendered = function() {
     transition(["card-post-transition", "sidebar-transition"]);
 }
 
+Template.post.helpers({
+    formatDate: function() {
+        return getDateFromTimestamp(this.post_date);
+    }
+});
+
 //var fbSdkLoader = function() {
 //    if(!Session.get("is Facebook JDK loaded?")) { // Load Facebook JDK only once.
 //      Session.set("is Facebook JDK loaded?", true);

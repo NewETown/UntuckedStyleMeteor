@@ -1,15 +1,14 @@
 <template name="postList">
     {{#each posts}}
-        {{#if spotlight}}
-            <div class="row hide-sm spotlight-post-row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    {{> postSpotlight}}
-                </div>
+        <div class="row post-row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                {{> postShort}}
             </div>
-        {{else}}
-            <div class="row post-row">
+        </div>
+        {{#if getProductLink}}
+            <div class="row post-row visible-sm visible-xs">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    {{> postShort}}
+                    {{> sidebarProducts}}
                 </div>
             </div>
         {{/if}}

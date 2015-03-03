@@ -55,8 +55,7 @@ Template.addPost.events({
 
 Template.addPost.helpers({
     getCategories: function() {
-        // Eventually this should query the DB but with only 4 it doesn't matter
-        var categories = ["BASICS", "CLOTHES", "DRINKS", "LIFE"];
+        var categories = ["STYLE", "AMBITION", "DRINKS", "SOCIAL", "LIFE"];
         return categories;
     }
 });
