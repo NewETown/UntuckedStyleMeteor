@@ -1,6 +1,8 @@
 Template.sidebarHighlight.rendered = function() {
     var imageURL = "";
     
+    transition(["sidebar-transition"]);
+    
     $.ajax({
         url: "http://api.instagram.com/oembed?url=http://instagr.am/p/y2sbabo4qS/",
         dataType: "jsonp",

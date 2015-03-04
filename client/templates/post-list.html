@@ -1,5 +1,6 @@
 <template name="postList">
     {{#each posts}}
+    {{getData}}
         <div class="row post-row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 {{> postShort}}

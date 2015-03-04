@@ -47,6 +47,5 @@ Template.navbar.rendered = function() {
     
     $('nav a').click(function() {
         scrollToTop();
-        transition(["card-post-short-transition"]);
     });
 }
