@@ -1,7 +1,7 @@
-Template.adminSidebar.rendered = function() {
+Template.adminPostSidebar.rendered = function() {
 }
 
-Template.adminSidebar.events({
+Template.adminPostSidebar.events({
     'click .load-post': function() {
         var post = this;
         window._POST_ID = post._id;
@@ -15,7 +15,7 @@ Template.adminSidebar.events({
     }
 });
 
-Template.adminSidebar.helpers({
+Template.adminPostSidebar.helpers({
     posts: function() {
         return Posts.find({}, {sort: {timestamp: -1}});
     }

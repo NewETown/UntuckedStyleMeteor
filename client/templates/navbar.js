@@ -29,21 +29,15 @@ Template.navbar.rendered = function() {
         prevHeight = pos;
     });
     
-    $(".ink-teal-gray").click(function(e) {
-        var x = e.pageX;
-        var y = e.pageY;
-        var parent = $(this).parent();
+    if(!mobileCheck()) {
+        $(".ink-teal-gray").click(function(e) {
+            var x = e.pageX;
+            var y = e.pageY;
+            var parent = $(this).parent();
 
-        inked(x, y, parent, 'teal-gray');
-    });
-
-    $(".ink-light-gray").click(function(e) {
-        var x = e.pageX;
-        var y = e.pageY;
-        var parent = $(this).parent();
-
-        inked(x, y, parent, 'light-gray');
-    });
+            inked(x, y, parent, 'teal-gray');
+        });
+    }
     
     $('nav a').click(function() {
         scrollToTop();

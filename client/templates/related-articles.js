@@ -18,7 +18,7 @@ Template.relatedArticles.helpers({
 });
 
 Template.relatedArticles.events({
-    'click .post-short': function(e) {
+    'click .card-short': function(e) {
         scrollToTop();
         setTimeout(function() {
             $('#fbComments').html(getHtml(e.target.href));

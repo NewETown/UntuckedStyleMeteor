@@ -1,4 +1,4 @@
 Template.productList.rendered = function() {
     scrollToTop();
-    transition(["card-post-short-transition", "sidebar-transition"]);
+    transition(["card-short-transition", "sidebar-transition"]);
 }

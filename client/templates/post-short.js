@@ -1,5 +1,5 @@
 Template.postShort.rendered = function() {
-    transition(["card-post-short-transition"]);
+    transition(["card-short-transition"]);
 }
 
 Template.postShort.helpers({

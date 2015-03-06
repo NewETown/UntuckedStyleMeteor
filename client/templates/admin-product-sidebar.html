@@ -1,0 +1,13 @@
+<template name="adminProductSidebar">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="sidebar sidebar-highlight">
+                <ul>
+                    {{#each products}}
+                        <li><a href="#" class="load-product">{{name}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>
