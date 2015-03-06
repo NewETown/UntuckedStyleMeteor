@@ -698,6 +698,10 @@ a.card-short-transition {
     .card-short:hover .card-content {
         top: 270px;
     }
+
+    .card-content .inner-text {
+        top: 0;
+    }
     
     .spotlight-card-row, .card-row {
         margin-bottom: 20px;
