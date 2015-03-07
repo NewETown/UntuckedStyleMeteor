@@ -117,6 +117,10 @@ a.card {
     transition: all .45s ease-out;
 }
 
+.spotlight-card-row, .card-row {
+    margin-bottom: 10px;
+}
+
 /* 
  * General helper classes
  */
@@ -258,6 +262,14 @@ li a {
     padding: 0em .5em 0em .5em;
     margin-bottom: 0;
     width: 100%;
+    height: 50%;
+}
+
+.card-content .inner-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .card-content  h1 {
@@ -339,7 +351,6 @@ a.product-cta {
     position: relative;
     background-color: #f9f9f9;
     text-align: center;
-    margin-bottom: .4em;
     padding-top: .2em;
     padding-bottom: .2em;
     background-repeat: no-repeat;
@@ -365,7 +376,7 @@ a.product-cta {
 
 .related-articles {
     position: relative;
-    top: -110px;
+    top: -60px;
 }
 
 .img-list > li{
