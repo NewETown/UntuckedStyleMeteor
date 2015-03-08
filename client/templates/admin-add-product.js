@@ -1,6 +1,8 @@
 Template.addProduct.rendered = function() {
     var FETCHING_PICTURE = false;
-    window._POST_ID = null;
+    window._PRODUCT_ID = null;
+    
+    $('#delete').prop('disabled',true);
     
     $('#product-image').focusout(function(e) {
         var url = e.target.value;
@@ -35,8 +37,12 @@ Template.addProduct.events({
         
         var _date = '';
         
-        if(checkDate($('#expiration-date').val()))
-           _date = Date.parse($('#expiration-date').val()) + (24*60*60*1000); // Add one day
+        if(checkDate($('#expiration-date').val())) {
+            _date = Date.parse($('#expiration-date').val());
+            
+            if(!window._PRODUCT_ID)
+               _date += (24*60*60*1000); // Add one day if this is a new product
+        }
         
         newProduct["name"] = $('#product-name').val();
         newProduct["expiration_date"] = _date;
@@ -53,6 +59,14 @@ Template.addProduct.events({
             resetEverything();
         } else {
             console.log("ERROR: Invalid product");
+        }
+    },
+    'click #delete': function() {
+        if(window._PRODUCT_ID != undefined && confirm('Are you sure?')) {
+            Meteor.call('productDelete', window._PRODUCT_ID);
+            resetEverything();
+        } else {
+            console.log('Did not delete');
         }
     }
 });
@@ -85,6 +99,7 @@ function resetEverything() {
     $('textarea').each(function() { this.value = ''; });
     $('.img-preview').attr('src','');
     window._PRODUCT_ID = null;
+    $('#delete').prop('disabled',true);
 }
 
 function checkDate(date) {

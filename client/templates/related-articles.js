@@ -14,19 +14,20 @@ Template.relatedArticles.helpers({
             posts = Posts.find({_id: {$ne: Router.current().data()._id}}, {sort: {post_date: -1}, limit: 4});
         
         return posts;
+    },
+    getDate: function() {
+        return getDateFromTimestamp(this.post_date);
     }
 });
 
 Template.relatedArticles.events({
     'click .card-short': function(e) {
         scrollToTop();
-        setTimeout(function() {
-            $('#fbComments').html(getHtml(e.target.href));
-            FB.XFBML.parse(document.getElementById('fbComments'));
-        }, 0);
+        try {
+            FB.XFBML.parse();
+        } catch(e) {
+            console.log('Error: ');
+            console.log(e);
+        }
     }
 });
-
-function getHtml(href) {
-    return '<div class="fb-comments" data-href="'+href+'" data-numposts="5" data-colorscheme="light" data-width="100%" data-order-by="social"></div>';
-}

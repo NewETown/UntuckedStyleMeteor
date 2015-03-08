@@ -14,6 +14,8 @@ Template.adminProductSidebar.events({
         $('#product-short').val(product.short);
         var tag_containers = $('.tag');
         tag_containers.each(function(i) {$(this).val(product.tags[i]);});
+        
+        $('#delete').prop('disabled',false);
     }
 });
 
@@ -22,5 +24,3 @@ Template.adminProductSidebar.helpers({
         return Products.find({expiration_date: {$gt: Date.now()}}, {sort: {expiration_date: -1}});
     }
 });
-
-// https://touchofmodern.insnw.net/products/000/187/846/700c6806a28491ea8281912ed5df8e4c_large.jpg

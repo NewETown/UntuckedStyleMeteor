@@ -9,3 +9,5 @@ iron:router
 meteorhacks:ssr
 underscore
 accounts-password
+facebook-sdk
+reywood:iron-router-ga

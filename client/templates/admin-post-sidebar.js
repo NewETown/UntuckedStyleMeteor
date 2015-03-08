@@ -12,6 +12,8 @@ Template.adminPostSidebar.events({
         $('#post-content').val(post.content);
         var tag_containers = $('.tag');
         tag_containers.each(function(i) {$(this).val(post.tags[i]);});
+        
+        $('#delete').prop('disabled',false);
     }
 });
 

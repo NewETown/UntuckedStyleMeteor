@@ -2,6 +2,8 @@ Template.addPost.rendered = function() {
     var FETCHING_PICTURE = false;
     window._POST_ID = null;
     
+    $('#delete').prop('disabled',true);
+    
     $('#post-background-picture').focusout(function(e) {
         var url = e.target.value;
         $('.img-error').css('display', 'none');
@@ -44,11 +46,19 @@ Template.addPost.events({
         newPost["short"] = $('#post-short').val();
         newPost["spotlight"] = false; // Not in use
         
-        if(validate(newPost)) {
+        if(validatePost(newPost)) {
             Meteor.call('postUpsert', window._POST_ID, newPost);
             resetEverything();
         } else {
             console.log("ERROR: Invalid post");
+        }
+    },
+    'click #delete': function() {
+        if(window._POST_ID != undefined && confirm('Are you sure?')) {
+            Meteor.call('postDelete', window._POST_ID);
+            resetEverything();
+        } else {
+            console.log('Cancel');
         }
     }
 });
@@ -81,4 +91,5 @@ function resetEverything() {
     $('textarea').each(function() { this.value = ''; });
     $('.img-preview').attr('src','');
     window._POST_ID = null;
+    $('#delete').prop('disabled',true);
 }
