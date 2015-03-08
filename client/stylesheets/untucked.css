@@ -262,6 +262,11 @@ li a {
     background-position: center 10%;
 }
 
+.tags {
+    font-style: italic;
+    font-size: .7em;
+}
+
 .card-content {
     background-color: rgba(255,255,255,.7);
     z-index:100;
@@ -299,6 +304,8 @@ li a {
 .card-cta {
     height: auto;
     padding-bottom: .4em;
+    padding-left: .5em;
+    padding-right: .5em;
 }
 
 .card-short-background {
@@ -573,7 +580,7 @@ a:focus {
 }
 
 /* Applied classes */
-.locked {
+.upper-nav {
     position: fixed;
     top: 0px;
     left: 0px;

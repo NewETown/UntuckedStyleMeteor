@@ -14,7 +14,7 @@ getDateFromTimestamp = function(timestamp) {
     var date = new Date(timestamp);
     var month = getMonthName(date.getMonth());
 
-    return month + (date.getDay() + 1) + ", " + date.getFullYear();
+    return month + date.getDate() + ", " + date.getFullYear();
 }
 
 function getMonthName(date) {

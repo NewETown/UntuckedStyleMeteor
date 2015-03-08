@@ -39,9 +39,6 @@ Template.addProduct.events({
         
         if(checkDate($('#expiration-date').val())) {
             _date = Date.parse($('#expiration-date').val());
-            
-            if(!window._PRODUCT_ID)
-               _date += (24*60*60*1000); // Add one day if this is a new product
         }
         
         newProduct["name"] = $('#product-name').val();

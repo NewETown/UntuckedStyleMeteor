@@ -1,9 +1,9 @@
 <template name="productShort">
-    <a href="{{url}}" class="card-short card-short-background card card-short-transition shadow-0" target="_blank" style="background-image: url({{image_url}});">
+    <a href="{{url}}" class="card-short card-short-background card card-short-transition shadow-0" id="{{getId}}" target="_blank" style="background-image: url({{image_url}});">
         <div class="card-content">
             <h1>{{name}}</h1>
             <p>{{short}}</p>
-            <p class="short-signature">Endorsed by {{endorser}}, expires on {{getFriendlyDate}}</p>
+            <p class="short-signature">Endorsed by {{endorser}}, sale through {{getFriendlyDate}}</p>
         </div>
     </a>
 </template>

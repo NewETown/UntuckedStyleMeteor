@@ -14,3 +14,9 @@ Template.sidebar.rendered = function() {
         }
     });
 }
+
+Template.sidebar.events({
+    'click a': function() {
+        scrollToTop();
+    }
+});

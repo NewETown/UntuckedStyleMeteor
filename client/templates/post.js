@@ -1,6 +1,6 @@
 Template.post.rendered = function() {
     scrollToTop();
-    transition(["card-post-transition", "sidebar-transition"]);
+    transition(["card-post-transition"]);
     setTimeout(function() {FB.XFBML.parse();}, 0);
 }
 

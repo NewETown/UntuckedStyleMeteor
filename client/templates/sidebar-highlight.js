@@ -4,7 +4,7 @@ Template.sidebarHighlight.rendered = function() {
     transition(["sidebar-transition"]);
     
     $.ajax({
-        url: "http://api.instagram.com/oembed?url=http://instagr.am/p/y2sbabo4qS/",
+        url: "http://api.instagram.com/oembed?url=http://instagr.am/p/ztjhE8o4jl/",
         dataType: "jsonp",
         success: function(data) {
             $('#igBox').append(data.html);
