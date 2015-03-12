@@ -1,5 +1,6 @@
 Template.sidebar.rendered = function() {
-    var lockHeight = $('.navbar').height() - $('.untucked-header-list').height();
+    var lockHeight = $('.navbar').height();
+    console.log(lockHeight);
     var lockedSidebar = $(".side-content");
     var lockedSidebarOffset = lockedSidebar.position().left;
     lockedSidebar.css('max-width', lockedSidebar.outerWidth() + 'px');

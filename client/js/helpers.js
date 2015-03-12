@@ -94,7 +94,7 @@ inked = function(pageX, pageY, parent, color) {
 }
 
 transition = function(arr) {
-    var timeout = 200;
+    var timeout = 150;
     var incr = 1;
     _.each(arr, function(cl) {
         var el_list = $('.' + cl);
@@ -105,7 +105,7 @@ transition = function(arr) {
             if(timeout < 1000)
                 timeout += timeout;
         });
-        timeout = 200;
+        timeout = 150;
         incr = 1;
     });
 }
