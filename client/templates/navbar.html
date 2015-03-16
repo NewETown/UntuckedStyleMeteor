@@ -1,21 +1,24 @@
 <template name="navbar">
-    <nav class="navbar shadow-2" role="navigation">
+    <nav class="navbar upper-nav" role="navigation">
         <div class="container-fluid">
-            <div class="navbar-greeting">
-                <div class="row header-row">
-                    <div class="col-md-offset-3 col-md-2 col-xs-4 logo-container">
-                        <img src="/img/logo.png" class="img-responsive logo">
+            <div class="row header-row">
+                <a href="{{pathFor route='home'}}">
+                    <div class="col-md-12 col-sm-12 col-xs-12 header-container">
+                        <img src="/img/handwritten_logo_highlight.png" class="img-responsive" />
                     </div>
-                    <div class="col-md-6 col-xs-8 header-text">
-                        <h1>Untucked Style</h1>
-                        <p class="catch-phrase">For the Modern Minimalist</p>
-                    </div>
-                </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar shadow-2 locked-lower-nav" role="navigation">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <ul class="text-center list-inline untucked-header-list">
-                    <li><div class="ink-container"><a href="#" class="ink-teal-gray">Basics</a></div></li>
-                    <li><div class="ink-container"><a href="#" class="ink-teal-gray">Clothes</a></div></li>
-                    <li><div class="ink-container"><a href="#" class="ink-teal-gray">Drinks</a></div></li>
-                    <li><div class="ink-container"><a href="#" class="ink-teal-gray">Life</a></div></li>
+                    <li><div class="ink-container"><a href="{{pathFor route='styleList'}}" class="ink-teal-gray">Style</a></div></li>
+                    <li><div class="ink-container"><a href="{{pathFor route='ambitionList'}}" class="ink-teal-gray">Ambition</a></div></li>
+                    <li><div class="ink-container"><a href="{{pathFor route='drinksList'}}" class="ink-teal-gray">Drinks</a></div></li>
+                    <li><div class="ink-container"><a href="{{pathFor route='socialList'}}" class="ink-teal-gray">Social</a></div></li>
+                    <li><div class="ink-container"><a href="{{pathFor route='lifeList'}}" class="ink-teal-gray">Life</a></div></li>
                 </ul>
             </div>
         </div>

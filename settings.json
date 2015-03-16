@@ -1,0 +1,10 @@
+{
+    "public": {
+        "ga": {
+            "id": "UA-60503508-1",
+            "require": {
+                "linkid": "linkid.js"
+            }
+        }
+    }
+}

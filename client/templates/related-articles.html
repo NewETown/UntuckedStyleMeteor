@@ -1,0 +1,15 @@
+<template name="relatedArticles">
+    {{#each articles}}
+        <div class="row card-row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <a href="/{{category}}/{{url}}" class="card-short card-short-background card shadow-0" style="background-image: url({{image_url}});">
+                    <div class="card-content">
+                        <h1>{{title}}</h1>
+                        <p>{{short}}</p>
+                        <p class="short-signature">{{author}} - {{getDate}}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {{/each}}
+</template>

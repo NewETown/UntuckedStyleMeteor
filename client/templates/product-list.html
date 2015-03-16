@@ -1,0 +1,17 @@
+<template name="productList">
+    <div class="row card-row">
+        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+            <div class="card card-short card-cta card-short-transition shadow-0">
+                <h2>Products We Buy</h2>
+                <p>As individuals, we become more like our surroundings over time. This holds true for the people we spend time with and the products that we use. At Untucked Style, we are extremely specific with the products we spend our money on and what we do with them. Each product is chosen to fill a specific need or purpose. This approach is a classic example of the minamilist attitudes we adhere to, however, this approach can be quite time consuming. We have designed the products section of this website to give our community the best resource for finding products we believe to be exceptional.</p>
+            </div>
+        </div>
+    </div>
+    {{#each products}}
+    <div class="row card-row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            {{> productShort}}
+        </div>
+    </div>
+    {{/each}}
+</template>

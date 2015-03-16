@@ -1,0 +1,20 @@
+<template name="postList">
+    {{#if isHome}}
+        {{> emailSignup}}
+    {{/if}}
+    
+    {{#each posts}}
+        <div class="row card-row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                {{> postShort}}
+            </div>
+        </div>
+        {{#if getProductLink}}
+            <div class="row card-row visible-sm visible-xs">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    {{> sidebarProducts}}
+                </div>
+            </div>
+        {{/if}}
+    {{/each}}
+</template>

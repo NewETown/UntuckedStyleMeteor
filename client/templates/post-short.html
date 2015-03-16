@@ -1,11 +1,9 @@
 <template name="postShort">
-    <a href="#" class="post shadow-0">
-        <div class="image-box">
-        </div>
-        <div class="content-box">
-            <h2>Test stuff</h2>
-            <p>Some sample text and content and stuff blah blah</p>
-            <p class="date">EC - 1/01/2015</p>
+    <a href="/{{category}}/{{url}}" class="card-short card-short-background card card-short-transition shadow-0" id="{{getId}}" style="background-image: url({{image_url}});">
+        <div class="card-content">
+            <h1>{{title}}</h1>
+            <p>{{short}}</p>
+            <p class="short-signature">{{author}} - {{getDate}}</p>
         </div>
     </a>
 </template>

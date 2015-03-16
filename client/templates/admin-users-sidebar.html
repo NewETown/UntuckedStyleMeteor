@@ -1,0 +1,13 @@
+<template name="adminUsersSidebar">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="sidebar sidebar-highlight">
+                <ul>
+                    {{#each users}}
+                        <li><a href="#" class="load-user">{{profile.firstname}} {{profile.lastname}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>
