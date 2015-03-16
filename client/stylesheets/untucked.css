@@ -136,6 +136,10 @@ p.short-signature {
     box-shadow: 0px 5px 8px 2px rgba(0,0,0,0.12), 0px 4px 8px rgba(0,0,0,0.15);
 }
 
+.invalid-field {
+    border: 2px solid red !important;
+}
+
 /* Untucked-specific */
 a {
     color: inherit;
@@ -148,15 +152,15 @@ a {
     position: relative;
 }
 
-.header-text {
-    text-align: center;
+.header-container {
+    margin-top: 10px;
 }
 
-.header-text h1 {
-    font-size: 1.3em;
-    font-weight: bold;
-    margin-bottom: 0;
-    margin-top: 10px;
+.header-container > img {
+    margin: 0 auto;
+    height: 1.9em;
+    margin-bottom: 5px;
+    width: 22%;
 }
 
 .catch-phrase {
@@ -478,14 +482,15 @@ textarea#card-short {
     font-size: 14px;
 }
 
-textarea#card-content {
-    height: 25em;
+textarea#post-content {
+    min-height: 25em;
     text-align: left;
     font-size: 14px;
+    resize: vertical;
 }
 
 .admin-edit .tags textarea {
-    width: 33%;
+    width: 19%;
     display: inline-block;
 }
 
@@ -707,9 +712,9 @@ a:focus {
         margin-top: 122px;
     }
     
-    .header-text h1 {
+    .header-container > img {
         margin-bottom: 10px;
-        font-size: 2.5em;
+        font-size: 1.8em;
     }
     
     .card-content {

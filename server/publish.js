@@ -3,5 +3,12 @@ Meteor.publish('posts', function() {
 });
 
 Meteor.publish('products', function() {
-    return Products.find({expiration_date: {$gt: Date.now()}});
+    return Products.find({});
+});
+
+Meteor.publish('userData', function() {
+    if(this.userId)
+        return Meteor.users.find({}, { fields: { username: 1, profile: 1, emails: 1 } });
+    else
+        this.ready();
 });

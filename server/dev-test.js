@@ -54,16 +54,24 @@ Meteor.startup(function () {
         });
     }
     
-    if(Meteor.users.find().count() == 0) {
+    if(Meteor.users.find().count() < 2) {
         Accounts.createUser({
-            username: "everett@mentaltangent.net",
-            password: "pa$$w0rd",
-            email: "everett@mentaltangent.net",
-            profile: {name: "Everett", is_admin: true}
+            username: "everett",
+            password: "at0myk1!",
+            email: "everett@untuckedstyle.com",
+            profile: {firstname: "Everett", lastname: "Carney", admin: true, can_post: true, can_manage_products: true}
+        });
+        
+        Accounts.createUser({
+            username: "ryan",
+            password: "pa$$wOrd1",
+            email: "ryan@untuckedstyle.com",
+            profile: {firstname: "Ryan", lastname: "Strandin", admin: false, can_post: true, can_manage_products: true}
         });
     }
-    
-    Accounts.config({
-        forbidClientAccountCreation: true
-    });
+});
+
+Accounts.config({
+    forbidClientAccountCreation: false,
+    loginExpirationInDays: 7
 });

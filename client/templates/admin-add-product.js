@@ -1,4 +1,4 @@
-Template.addProduct.rendered = function() {
+Template.adminManageProducts.rendered = function() {
     var FETCHING_PICTURE = false;
     window._PRODUCT_ID = null;
     
@@ -25,13 +25,13 @@ Template.addProduct.rendered = function() {
         } else if(url.indexOf('.gif') < 1) {
             setImage(url);
         } else {
-            $('.img-preview').attr('src', '');
+            $('.img-preview').attr('src', '').css('display','none');
             $('.url-error').css('display', 'block');
         }
     });
 }
 
-Template.addProduct.events({
+Template.adminManageProducts.events({
     'click #submit': function() {
         var newProduct = {};
         
@@ -44,18 +44,18 @@ Template.addProduct.events({
         newProduct["name"] = $('#product-name').val();
         newProduct["expiration_date"] = _date;
         newProduct["tags"] = getTags();
-        newProduct["endorser"] = Meteor.user().profile.name;
+        newProduct["endorser"] = Meteor.user().profile.firstname + " " + Meteor.user().profile.lastname;
         newProduct["image_url"] = $('.img-preview').attr('src');
         newProduct["url"] = $('#product-url').val();
         newProduct["short"] = $('#product-short').val();
         newProduct["spotlight"] = false; // Not in use
         newProduct["price"] = $('#product-price').val();
         
+        $('.invalid-field').removeClass('invalid-field');
+        
         if(validateProduct(newProduct)) {
             Meteor.call('productUpsert', window._PRODUCT_ID, newProduct);
             resetEverything();
-        } else {
-            console.log("ERROR: Invalid product");
         }
     },
     'click #delete': function() {
@@ -68,7 +68,7 @@ Template.addProduct.events({
     }
 });
 
-Template.addProduct.helpers({
+Template.adminManageProducts.helpers({
     getFriendlyDate: function() {
         var _d = new Date(this.expiration_date);
         return _d.toLocaleDateString();
@@ -76,7 +76,7 @@ Template.addProduct.helpers({
 });
 
 function setImage(url) {
-    $('.img-preview').attr('src', url);
+    $('.img-preview').attr('src', url).css('display','block');
 }
 
 function getTags() {
@@ -94,7 +94,7 @@ function toUrl(url) {
 
 function resetEverything() {
     $('textarea').each(function() { this.value = ''; });
-    $('.img-preview').attr('src','');
+    $('.img-preview').attr('src','').css('display','none');
     window._PRODUCT_ID = null;
     $('#delete').prop('disabled',true);
 }
@@ -108,4 +108,56 @@ function checkDate(date) {
         return false;
     
     return true;
+}
+
+function validateProduct(product) {
+    var isValid = true;
+    
+    if(!product.name) {
+        isValid = false;
+        $('#product-name').addClass('invalid-field');
+        console.log('ERROR: Invalid product name');
+    }
+    
+    if(!product.endorser) {
+        isValid = false;
+        console.log('ERROR: Need product endorser');
+    }
+    
+    if(product.expiration_date <=  Date.now()) {
+        isValid = false;
+        $('#expiration-date').addClass('invalid-field');
+        console.log('ERROR: Invalid product date');
+    }
+    
+    if(product.short.length > 140 || product.short.length === 0) {
+        isValid = false;
+        $('#product-short').addClass('invalid-field');
+        console.log('ERROR: Invalid short description');
+    }
+    
+    if(product.url === null) {
+        isValid = false;
+        console.log('ERROR: Invalid product URL');
+    }
+    
+    if(product.image_url === '') {
+        isValid = false;
+        $('#product-image').addClass('invalid-field');
+        console.log('ERROR: Invalid product image');
+    }
+    
+    if(product.tags.length < 1) {
+        isValid = false;
+        $('.tags').addClass('invalid-field');
+        console.log('ERROR: Invalid tag(s)');
+    }
+    
+    if(!product.price || product.price <= 0.00) {
+        isValid = false;
+        $('#product-price').addClass('invalid-field');
+        console.log('ERROR: Invalid product price');
+    }
+    
+    return isValid;
 }

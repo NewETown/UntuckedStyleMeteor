@@ -2,7 +2,7 @@ Template.addPost.rendered = function() {
     var FETCHING_PICTURE = false;
     window._POST_ID = null;
     
-    $('#delete').prop('disabled',true);
+    $('#delete').prop('disabled', true);
     
     $('#post-background-picture').focusout(function(e) {
         var url = e.target.value;
@@ -25,7 +25,7 @@ Template.addPost.rendered = function() {
         } else if(url.indexOf('.gif') < 1) {
             setImage(url);
         } else {
-            $('.img-preview').attr('src', '');
+            $('.img-preview').attr('src', '').css('display','none');
             $('.url-error').css('display', 'block');
         }
     });
@@ -39,26 +39,25 @@ Template.addPost.events({
         newPost["content"] = $('#post-content').val();
         newPost["tags"] = getTags();
         newPost["post_date"] = Date.now();
-        newPost["author"] = Meteor.user().profile.name;
+        newPost["author"] = Meteor.user().profile.firstname + " " + Meteor.user().profile.lastname;
+        newPost["author_id"] = Meteor.user()._id;
         newPost["image_url"] = $('.img-preview').attr('src');
         newPost["title"] = $('#post-title').val();
         newPost["url"] = toUrl(newPost.title);
         newPost["short"] = $('#post-short').val();
-        newPost["spotlight"] = false; // Not in use
+        newPost["spotlight"] = false;
+        
+        $('.invalid-field').removeClass('invalid-field');
         
         if(validatePost(newPost)) {
             Meteor.call('postUpsert', window._POST_ID, newPost);
             resetEverything();
-        } else {
-            console.log("ERROR: Invalid post");
         }
     },
     'click #delete': function() {
         if(window._POST_ID != undefined && confirm('Are you sure?')) {
             Meteor.call('postDelete', window._POST_ID);
             resetEverything();
-        } else {
-            console.log('Cancel');
         }
     }
 });
@@ -71,7 +70,7 @@ Template.addPost.helpers({
 });
 
 function setImage(url) {
-    $('.img-preview').attr('src', url);
+    $('.img-preview').attr('src', url).css('display','block');
 }
 
 function getTags() {
@@ -88,8 +87,61 @@ function toUrl(url) {
 }
 
 function resetEverything() {
+    $('#post-category').val('PICK ONE');
     $('textarea').each(function() { this.value = ''; });
     $('.img-preview').attr('src','');
     window._POST_ID = null;
     $('#delete').prop('disabled',true);
+}
+
+function validatePost(post) {
+    var isValid = true;
+    
+    if(!post.title) {
+        isValid = false;
+        $('#post-title').addClass('invalid-field');
+        console.log('ERROR: Invalid title');
+    }
+    
+    if(!post.author) {
+        isValid = false;
+        console.log('ERROR: Invalid post author');
+    }
+    
+    if(post.content.length < 400 || post.content.length === 0) {
+        isValid = false;
+        $('#post-content').addClass('invalid-field');
+        console.log('ERROR: Invalid title');
+    }
+    
+    if(post.short.length > 140 || post.short.length === 0) {
+        isValid = false;
+        $('#post-short').addClass('invalid-field');
+        console.log('ERROR: Invalid short description');
+    }
+    
+    if(post.url === null) {
+        isValid = false;
+        console.log('ERROR: Invalid URL');
+    }
+    
+    if(post.category === "pick one") {
+        isValid = false;
+        $('#post-category').addClass('invalid-field');
+        console.log('ERROR: Please select a category');
+    }
+    
+    if(post.image_url === '') {
+        isValid = false;
+        $('#post-background-picture').addClass('invalid-field');
+        console.log('ERROR: Invalid picture URL');
+    }
+    
+    if(post.tags.length < 1) {
+        isValid = false;
+        $('.tags').addClass('invalid-field');
+        console.log('ERROR: You must include at least one tag');
+    }
+    
+    return isValid;
 }

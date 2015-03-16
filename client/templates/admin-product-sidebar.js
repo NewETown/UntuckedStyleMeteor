@@ -21,6 +21,8 @@ Template.adminProductSidebar.events({
 
 Template.adminProductSidebar.helpers({
     products: function() {
-        return Products.find({expiration_date: {$gt: Date.now()}}, {sort: {expiration_date: -1}});
+        var products = Products.find({}, {sort: {expiration_date: -1}});
+        console.log(products.count());
+        return products;
     }
 });
