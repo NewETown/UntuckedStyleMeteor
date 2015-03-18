@@ -163,6 +163,17 @@ a {
     width: 22%;
 }
 
+.header-text {
+    text-align: center;
+}
+
+.header-text h1 {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
 .catch-phrase {
     display: none;
 }
@@ -715,6 +726,11 @@ a:focus {
     .header-container > img {
         margin-bottom: 10px;
         font-size: 1.8em;
+    }
+    
+    .header-text h1 {
+        margin-bottom: 10px;
+        font-size: 2.5em;
     }
     
     .card-content {
