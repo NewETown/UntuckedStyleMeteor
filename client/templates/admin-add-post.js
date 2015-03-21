@@ -64,7 +64,7 @@ Template.addPost.events({
 
 Template.addPost.helpers({
     getCategories: function() {
-        var categories = ["STYLE", "AMBITION", "DRINKS", "SOCIAL", "LIFE"];
+        var categories = ["STYLE", "AMBITION", "DRINKS", "LIFE"];
         return categories;
     }
 });
@@ -97,7 +97,7 @@ function resetEverything() {
 function validatePost(post) {
     var isValid = true;
     
-    if(!post.title) {
+    if(!post.title || post.title > 70) {
         isValid = false;
         $('#post-title').addClass('invalid-field');
         console.log('ERROR: Invalid title');
@@ -114,7 +114,7 @@ function validatePost(post) {
         console.log('ERROR: Invalid title');
     }
     
-    if(post.short.length > 140 || post.short.length === 0) {
+    if(post.short.length > 154 || post.short.length === 0) {
         isValid = false;
         $('#post-short').addClass('invalid-field');
         console.log('ERROR: Invalid short description');

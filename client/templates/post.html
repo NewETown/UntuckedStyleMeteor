@@ -1,11 +1,10 @@
 <template name="post">
     <div class="post shadow-0 card-post-transition">
         <div class="header-img" style="background-image: url({{image_url}});"></div>
-<!--        <img src="{{image_url}}" class="header-img" />-->
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="title-row">
-                    <h1>{{title}}</h1>
+                    <h1>{{post.title}}</h1>
                     <p class="author-row">{{author}} - {{formatDate}}</p>
                     {{> facebookLike likesConfig}}
                 </div>

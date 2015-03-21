@@ -382,6 +382,10 @@ li a {
     width: 70%;
 }
 
+.product-link {
+    font-weight: 600;
+}
+
 a.product-cta {
     position: relative;
     background-color: #f9f9f9;
