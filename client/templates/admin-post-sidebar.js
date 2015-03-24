@@ -4,7 +4,7 @@ Template.adminPostSidebar.rendered = function() {
 Template.adminPostSidebar.events({
     'click .load-post': function() {
         var post = this;
-        window._POST_ID = post._id;
+        window._POST = post;
         $('#post-category').val(post.category.toUpperCase());
         $('#post-title').val(post.title);
         $('#post-background-picture').focusin().val(post.image_url).focusout();

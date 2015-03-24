@@ -38,14 +38,18 @@ Template.addPost.events({
         newPost["category"] = $('#post-category').val().toLowerCase();
         newPost["content"] = $('#post-content').val();
         newPost["tags"] = getTags();
-        newPost["post_date"] = Date.now();
-        newPost["author"] = Meteor.user().profile.firstname + " " + Meteor.user().profile.lastname;
-        newPost["author_id"] = Meteor.user()._id;
         newPost["image_url"] = $('.img-preview').attr('src');
         newPost["title"] = $('#post-title').val();
         newPost["url"] = toUrl(newPost.title);
         newPost["short"] = $('#post-short').val();
         newPost["spotlight"] = false;
+        newPost["last_update"] = Date.now();
+        
+        if(!window._POST_ID) {
+            newPost["post_date"] = Date.now();
+            newPost["author"] = Meteor.user().profile.firstname + " " + Meteor.user().profile.lastname;
+            newPost["author_id"] = Meteor.user()._id;
+        }
         
         $('.invalid-field').removeClass('invalid-field');
         
@@ -101,11 +105,6 @@ function validatePost(post) {
         isValid = false;
         $('#post-title').addClass('invalid-field');
         console.log('ERROR: Invalid title');
-    }
-    
-    if(!post.author) {
-        isValid = false;
-        console.log('ERROR: Invalid post author');
     }
     
     if(post.content.length < 400 || post.content.length === 0) {
