@@ -1,6 +1,6 @@
 Template.adminManageProducts.rendered = function() {
     var FETCHING_PICTURE = false;
-    window._PRODUCT_ID = null;
+    window._PRODUCT = null;
     
     $('#delete').prop('disabled',true);
     
@@ -44,23 +44,29 @@ Template.adminManageProducts.events({
         newProduct["name"] = $('#product-name').val();
         newProduct["expiration_date"] = _date;
         newProduct["tags"] = getTags();
-        newProduct["endorser"] = Meteor.user().profile.firstname + " " + Meteor.user().profile.lastname;
         newProduct["image_url"] = $('.img-preview').attr('src');
         newProduct["url"] = $('#product-url').val();
         newProduct["short"] = $('#product-short').val();
         newProduct["spotlight"] = false; // Not in use
         newProduct["price"] = $('#product-price').val();
         
+        if(window._PRODUCT) {
+            newProduct["endorser"] = window._PRODUCT.endorser;
+        } else {
+            newProduct["endorser"] = Meteor.user().profile.firstname + " " + Meteor.user().profile.lastname;
+            newProduct["creation_date"] = Date.now();
+        }
+        
         $('.invalid-field').removeClass('invalid-field');
         
         if(validateProduct(newProduct)) {
-            Meteor.call('productUpsert', window._PRODUCT_ID, newProduct);
+            Meteor.call('productUpsert', window._PRODUCT._id, newProduct);
             resetEverything();
         }
     },
     'click #delete': function() {
-        if(window._PRODUCT_ID != undefined && confirm('Are you sure?')) {
-            Meteor.call('productDelete', window._PRODUCT_ID);
+        if(window._PRODUCT._id != undefined && confirm('Are you sure?')) {
+            Meteor.call('productDelete', window._PRODUCT._id);
             resetEverything();
         } else {
             console.log('Did not delete');
@@ -95,7 +101,7 @@ function toUrl(url) {
 function resetEverything() {
     $('textarea').each(function() { this.value = ''; });
     $('.img-preview').attr('src','').css('display','none');
-    window._PRODUCT_ID = null;
+    window._PRODUCT = null;
     $('#delete').prop('disabled',true);
 }
 

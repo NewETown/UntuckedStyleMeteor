@@ -383,7 +383,15 @@ li a {
 }
 
 .product-link {
-    font-weight: 600;
+    color: #3aa9d0;
+}
+
+.product-link:hover {
+    color: #3aa9d0;
+}
+
+.product-link:focus {
+    color: #3aa9d0;
 }
 
 a.product-cta {
@@ -476,10 +484,6 @@ a.product-cta {
     font-size: 20px;
 }
 
-/*
-.post-edit textarea::-moz-placeholder,
-.post-edit textarea:-ms-input-placeholder,
-*/
 .admin-edit textarea::-webkit-input-placeholder {
     text-align: center;
     top: 30%;
@@ -527,12 +531,39 @@ textarea#post-content {
 /* BOOTSTRAP OVERRIDES */
 a:hover {
     text-decoration: none;
-    color: #00E5FF;
+    color: #212121; /* #84c4f4;  #2f8ccf; #00a4b7; */
+/*    font-weight: bold;*/
 }
 
 a:focus {
     text-decoration: none;
+    color: #212121; /* #84c4f4;  #2f8ccf; #00a4b7; */
+/*    font-weight: bold;*/
+}
+
+
+a:focus > .header-text h1 {
     color: #212121;
+}
+
+ul li:hover div a {
+    opacity: 0;
+}
+
+ul li:hover:before {
+    position: absolute;
+    font-weight: bold;
+    content: attr(data-text);
+    height: 36px;
+    text-decoration: none;
+    display: block;
+    padding: .9em .4em .4em .4em;
+    text-transform: uppercase;
+    bottom: .9em;
+}
+
+ul li:hover:last-of-type:before {
+    color: #3aa9d0;
 }
 
 .navbar {
@@ -738,7 +769,7 @@ a:focus {
     }
     
     .card-content {
-        background-color: rgba(255,255,255,.7);
+        background-color: rgba(255,255,255,.85);
         padding: 0em 1em 0em 1em;
     }
     

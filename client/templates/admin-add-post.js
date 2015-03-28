@@ -1,6 +1,6 @@
 Template.addPost.rendered = function() {
     var FETCHING_PICTURE = false;
-    window._POST_ID = null;
+    window._POST = null;
     
     $('#delete').prop('disabled', true);
     
@@ -45,22 +45,26 @@ Template.addPost.events({
         newPost["spotlight"] = false;
         newPost["last_update"] = Date.now();
         
-        if(!window._POST_ID) {
+        if(!window._POST) {
             newPost["post_date"] = Date.now();
             newPost["author"] = Meteor.user().profile.firstname + " " + Meteor.user().profile.lastname;
             newPost["author_id"] = Meteor.user()._id;
+        } else {
+            newPost["post_date"] = window._POST.post_date;
+            newPost["author"] = window._POST.author;
+            newPost["author_id"] = window._POST.author_id;
         }
         
         $('.invalid-field').removeClass('invalid-field');
         
         if(validatePost(newPost)) {
-            Meteor.call('postUpsert', window._POST_ID, newPost);
+            Meteor.call('postUpsert', window._POST._id, newPost);
             resetEverything();
         }
     },
     'click #delete': function() {
-        if(window._POST_ID != undefined && confirm('Are you sure?')) {
-            Meteor.call('postDelete', window._POST_ID);
+        if(window._POST != undefined && confirm('Are you sure?')) {
+            Meteor.call('postDelete', window._POST._id);
             resetEverything();
         }
     }

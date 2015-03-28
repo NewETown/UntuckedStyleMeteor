@@ -7,10 +7,6 @@ Meteor.publish('posts', function() {
         this.ready();
 });
 
-//Meteor.publish('fullPost', function(category, post_url) {
-//    return Posts.find({category: category, url: post_url});
-//});
-
 Meteor.publish('products', function() {
     var products = Products.find({});
     

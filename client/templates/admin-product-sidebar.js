@@ -5,7 +5,7 @@ Template.adminProductSidebar.events({
     'click .load-product': function() {
         var product = this;
         var _d = new Date(product.expiration_date);
-        window._PRODUCT_ID = product._id;
+        window._PRODUCT = product;
         $('#product-name').val(product.name);
         $('#expiration-date').val(_d.toLocaleDateString());
         $('#product-url').val(product.url);
