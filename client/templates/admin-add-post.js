@@ -58,7 +58,11 @@ Template.addPost.events({
         $('.invalid-field').removeClass('invalid-field');
         
         if(validatePost(newPost)) {
-            Meteor.call('postUpsert', window._POST._id, newPost);
+            var id = null;
+            if (window._POST != null)
+                id = window._POST._id;
+            
+            Meteor.call('postUpsert', id, newPost);
             resetEverything();
         }
     },
@@ -128,7 +132,7 @@ function validatePost(post) {
         console.log('ERROR: Invalid URL');
     }
     
-    if(post.category === "pick one") {
+    if(post.category.toLowerCase() === "pick one") {
         isValid = false;
         $('#post-category').addClass('invalid-field');
         console.log('ERROR: Please select a category');

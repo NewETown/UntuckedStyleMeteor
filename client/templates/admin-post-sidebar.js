@@ -13,6 +13,8 @@ Template.adminPostSidebar.events({
         var tag_containers = $('.tag');
         tag_containers.each(function(i) {$(this).val(post.tags[i]);});
         
+        $('.invalid-field').removeClass('invalid-field');
+        
         $('#delete').prop('disabled',false);
     }
 });

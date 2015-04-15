@@ -7,6 +7,12 @@
     <div class="admin-edit">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3>Title</h3>
+                <textarea id="post-title" placeholder="Post Title"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h3 class="inline">Add post to </h3>
                 <select id="post-category">
                     <option selected>PICK ONE</option>
@@ -14,12 +20,6 @@
                         <option value="{{.}}">{{.}}</option>
                     {{/each}}
                 </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h3>Title</h3>
-                <textarea id="post-title" placeholder="Post Title"></textarea>
             </div>
         </div>
         <div class="row">
@@ -34,13 +34,13 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h3>Short Description</h3>
-                <textarea id="post-short" placeholder="Short Description" maxlength="140"></textarea>
+                <textarea id="post-short" placeholder="Short Description" maxlength="140" class="short"></textarea>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h3>Content</h3>
-                <textarea id="post-content" placeholder="Post Content"></textarea>
+                <textarea id="post-content" placeholder="Post Content" class="content"></textarea>
             </div>
         </div>
         <div class="row">
