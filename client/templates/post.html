@@ -4,22 +4,24 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="title-row">
-                    <h1>{{post.title}}</h1>
-                    <p class="author-row">{{author}} - {{formatDate}}</p>
-                    {{> facebookLike likesConfig}}
+                    <h1>{{title}}</h1>
+                    <div class="row divider-row">
+                        <div class="col-md-6 col-sm-6 col-xs-7">
+                            <p class="author-row">{{author}} in <a href="{{pathFor route=getPathName}}">{{getCapitalizedCategory}}</a></p>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-5">
+                            <p class="author-row text-right">{{formatDate}}</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="long-card-content" style="margin-top: 10px;">
-                    <p>{{{content}}}</p>
+                    {{{content}}}
                 </div>
-                <ul class="list-inline text-center tags">
-                    {{#each tags}}
-                    <li>{{.}}</li>
-                    {{/each}}
-                </ul>
+                {{> addthisSharebox}}
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
+            <div style="width: 100%;">
                 {{> facebookComments commentsConfig}}
             </div>
         </div>
@@ -27,4 +29,7 @@
     <div class="related-articles">
         {{> relatedArticles}}
     </div>
+    
+<!--    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5527d4ef798e4d0b" async="async"></script>-->
+
 </template>

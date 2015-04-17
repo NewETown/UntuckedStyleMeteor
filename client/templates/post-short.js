@@ -8,5 +8,9 @@ Template.postShort.helpers({
     },
     getId: function() {
         return this._id;
+    },
+    getCapitalizedCategory: function() {
+        var cat = this.category;
+        return cat.charAt(0).toUpperCase() + cat.slice(1);
     }
 });

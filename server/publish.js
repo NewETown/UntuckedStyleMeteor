@@ -1,13 +1,19 @@
 Meteor.publish('posts', function() {
-    return Posts.find({});
+    var posts = Posts.find({});
+    
+    if (posts)
+        return posts;
+    else
+        this.ready();
 });
 
-//Meteor.publish('fullPost', function(category, post_url) {
-//    return Posts.find({category: category, url: post_url});
-//});
-
 Meteor.publish('products', function() {
-    return Products.find({});
+    var products = Products.find({});
+    
+    if (products)
+        return products;
+    else
+        this.ready();
 });
 
 Meteor.publish('userData', function() {

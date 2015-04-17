@@ -1,4 +1,5 @@
 Template.postList.rendered = function() {
+    scrollToTop();
 }
 
 Template.postList.helpers({

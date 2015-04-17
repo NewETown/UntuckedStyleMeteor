@@ -1,21 +1,18 @@
 Template.sidebar.rendered = function() {
-    var lockedSidebar = $(".side-content");
-    var lockedSidebarOffset = lockedSidebar.position().left;
-    lockedSidebar.css('max-width', lockedSidebar.outerWidth() + 'px');
     
-    $(window).scroll(function() {
-        if($(window).scrollTop() > 48) {
-            lockedSidebar.addClass("locked-side-content");
-            lockedSidebar.css('left', lockedSidebarOffset);
-        } else {
-            lockedSidebar.removeClass("locked-side-content");
-            lockedSidebar.css('left', 0);
-        }
-    });
+    $(window).resize(positionSidebar);
+    
+    positionSidebar();
 }
 
 Template.sidebar.events({
-    'click a': function() {
-        scrollToTop();
-    }
 });
+
+function positionSidebar() {
+    var sidebar = $(".side-content");
+    var lockedContent = sidebar.children();
+    var lockedSidebarOffset = $(".side-content").position().left;
+    lockedContent.css('width', sidebar.outerWidth() + 'px');
+    lockedContent.addClass("locked-side-content");
+    lockedContent.css('left', lockedSidebarOffset);
+}

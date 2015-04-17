@@ -1,5 +1,4 @@
 Template.appBody.rendered = function() {
-    
 }
 
 Template.appBody.helpers({

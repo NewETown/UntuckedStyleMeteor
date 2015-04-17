@@ -9,42 +9,55 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h3>Name</h3>
                 <textarea id="product-name" placeholder="Product Name"></textarea>
+                <p class="name error">Don't forget to name your product!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3 class="inline">Add post to </h3>
+                <select id="product-category">
+                    <option selected>PICK ONE</option>
+                    {{#each getCategories}}
+                        <option value="{{.}}">{{.}}</option>
+                    {{/each}}
+                </select>
+                <p class="category error">Please select a category.</p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h3>Product URL</h3>
                 <textarea id="product-url" placeholder="http://someurl.com/their-product"></textarea>
-                <p class="url-error">Please enter a fully-qualified URL!</p>
+                <p class="url error">Please enter a fully-qualified URL!</p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h3>Expiration Date</h3>
                 <textarea id="expiration-date" placeholder="mm/dd/yyyy"></textarea>
-                <p class="url-error">Please enter a date that isn't clearly wrong!</p>
+                <p class="expiration error">Please enter an expiration date greater than today!</p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h3>Product Price</h3>
                 <textarea id="product-price" placeholder="$1000.00"></textarea>
-                <p class="url-error">Make sure that price is correct.</p>
+                <p class="price error">Make sure that price is correct.</p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h3>Background Picture URL</h3>
-                <textarea id="product-image" placeholder="http://someawesomepicture.jpg"></textarea>
+                <textarea id="product-image" placeholder="http://www.athing.com/src/someawesomepicture.jpg"></textarea>
                 <img class="img-preview img-responsive" src=""/>
-                <p class="url-error">Please enter a fully-qualified URL!</p>
-                <p class="img-error">Error fetching image!</p>
+                <p class="img error">Error fetching image!</p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h3>Short Description</h3>
-                <textarea id="product-short" placeholder="Short Description" maxlength="140"></textarea>
+                <textarea id="product-short" placeholder="Short Description" maxlength="140" class="short"></textarea>
+                <p class="short error">Descriptions cannot exceed 140 characters.</p>
             </div>
         </div>
         <div class="row">
@@ -57,6 +70,7 @@
                     <textarea class="tag" placeholder="Tag"></textarea>
                     <textarea class="tag" placeholder="Tag"></textarea>
                 </div>
+                <p class="tag-list error">At least one tag required!</p>
             </div>
         </div>
         <div class="row">

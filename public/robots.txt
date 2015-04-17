@@ -1,0 +1,3 @@
+user-agent: *
+disallow: /upper-management
+disallow: /upper-management/*

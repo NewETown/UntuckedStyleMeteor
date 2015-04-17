@@ -23,11 +23,17 @@ Template.relatedArticles.helpers({
 Template.relatedArticles.events({
     'click .card-short': function(e) {
         scrollToTop();
-        try {
-            FB.XFBML.parse();
-        } catch(e) {
-            console.log('Error: ');
-            console.log(e);
-        }
+        setTimeout(function() {
+            //check for addthis buttons
+            if($('.addthis_sharing_toolbox').children().length === 0) {
+                addthis.layers.refresh();
+            }
+            try {
+                FB.XFBML.parse();
+            } catch(e) {
+                console.log('Error: ');
+                console.log(e);
+            }
+        }, 1000);
     }
 });

@@ -1,6 +1,6 @@
 Template.addPost.rendered = function() {
     var FETCHING_PICTURE = false;
-    window._POST_ID = null;
+    window._POST = null;
     
     $('#delete').prop('disabled', true);
     
@@ -38,25 +38,37 @@ Template.addPost.events({
         newPost["category"] = $('#post-category').val().toLowerCase();
         newPost["content"] = $('#post-content').val();
         newPost["tags"] = getTags();
-        newPost["post_date"] = Date.now();
-        newPost["author"] = Meteor.user().profile.firstname + " " + Meteor.user().profile.lastname;
-        newPost["author_id"] = Meteor.user()._id;
         newPost["image_url"] = $('.img-preview').attr('src');
         newPost["title"] = $('#post-title').val();
         newPost["url"] = toUrl(newPost.title);
         newPost["short"] = $('#post-short').val();
         newPost["spotlight"] = false;
+        newPost["last_update"] = Date.now();
+        
+        if(!window._POST) {
+            newPost["post_date"] = Date.now();
+            newPost["author"] = Meteor.user().profile.firstname + " " + Meteor.user().profile.lastname;
+            newPost["author_id"] = Meteor.user()._id;
+        } else {
+            newPost["post_date"] = window._POST.post_date;
+            newPost["author"] = window._POST.author;
+            newPost["author_id"] = window._POST.author_id;
+        }
         
         $('.invalid-field').removeClass('invalid-field');
         
         if(validatePost(newPost)) {
-            Meteor.call('postUpsert', window._POST_ID, newPost);
+            var id = null;
+            if (window._POST != null)
+                id = window._POST._id;
+            
+            Meteor.call('postUpsert', id, newPost);
             resetEverything();
         }
     },
     'click #delete': function() {
-        if(window._POST_ID != undefined && confirm('Are you sure?')) {
-            Meteor.call('postDelete', window._POST_ID);
+        if(window._POST != undefined && confirm('Are you sure?')) {
+            Meteor.call('postDelete', window._POST._id);
             resetEverything();
         }
     }
@@ -103,11 +115,6 @@ function validatePost(post) {
         console.log('ERROR: Invalid title');
     }
     
-    if(!post.author) {
-        isValid = false;
-        console.log('ERROR: Invalid post author');
-    }
-    
     if(post.content.length < 400 || post.content.length === 0) {
         isValid = false;
         $('#post-content').addClass('invalid-field');
@@ -125,7 +132,7 @@ function validatePost(post) {
         console.log('ERROR: Invalid URL');
     }
     
-    if(post.category === "pick one") {
+    if(post.category.toLowerCase() === "pick one") {
         isValid = false;
         $('#post-category').addClass('invalid-field');
         console.log('ERROR: Please select a category');
