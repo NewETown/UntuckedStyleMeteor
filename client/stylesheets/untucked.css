@@ -98,11 +98,11 @@ p {
     margin-bottom: 10px;
 }
 
-ul li div:before {
+.untucked-header-list li a:before {
     position: absolute;
     content: '';
     height: 1px;
-    margin-top: 5px;
+    bottom: 3px;
     left: 15%;
     width: 70%;
     background-color: #212121;
@@ -114,29 +114,30 @@ ul li div:before {
     transition: all .5s ease-out;
 }
 
-ul li:last-of-type div:before {
+.untucked-header-list li:last-of-type a:before {
     background-color: #3aa9d0;
 }
 
-ul li:last-of-type div a {
+.untucked-header-list li:last-of-type a {
     font-weight: bolder;
 }
 
-ul li:hover div:before {
+.untucked-header-list li:hover a:before {
     opacity: 1;
 }
 
-ul li div a.active:before {
+.untucked-header-list li a.active:before {
     position: absolute;
     content: '';
     height: 1px;
-    margin-bottom: -5px;
+    margin-top: 5px;
     left: 15%;
     width: 70%;
     background-color: #212121;
+    opacity: 1;
 }
 
-ul li:last-of-type div a.active:before {
+.untucked-header-list li:last-of-type a.active:before {
     background-color: #3aa9d0;
 }
 
@@ -150,6 +151,7 @@ ul li:last-of-type div a.active:before {
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
     border-radius: 0px;
+    overflow: visible;
 }
 
 .list-inline {
@@ -933,12 +935,12 @@ textarea.short {
         margin-top: 0;
     }
     
-    ul li div:before {
-        bottom: 2px;
+    .untucked-header-list li a:before {
+        bottom: -5px;
     }
     
-    ul li div a.active:before {
-        bottom: 2px;
+    .untucked-header-list li a.active:before {
+        bottom: -5px;
     }
 
     li a {
