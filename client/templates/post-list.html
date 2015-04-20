@@ -1,7 +1,5 @@
 <template name="postList">
-    {{#if isHome}}
-        {{> emailSignup}}
-    {{/if}}
+    {{> categoryHeader}}
     
     {{#each posts}}
         {{> postShort}}
