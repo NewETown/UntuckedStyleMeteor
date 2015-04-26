@@ -474,8 +474,8 @@ li a {
     position: relative;
     overflow: hidden;
     background-color: #f9f9f9;
-    top: -40px;
     opacity: 1;
+    margin-bottom: 20px;
     -webkit-transition: all .6s ease-out;
     -moz-transition: all .6s ease-out;
     -ms-transition: all .6s ease-out;
@@ -700,7 +700,6 @@ a.product-cta {
 
 .related-articles {
     position: relative;
-    top: -20px;
 }
 
 .img-list > li{

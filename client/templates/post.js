@@ -16,6 +16,10 @@ Template.post.rendered = function() {
 //            setTimeout(shrink, 1500);
 //        }
 //    });
+    
+    $('.author-row a').click(function(e) {
+        $('li > .nav-' + $(e.target).data('category')).addClass('active');
+    });
 }
 
 Template.post.helpers({
@@ -39,7 +43,7 @@ Template.post.helpers({
         };
     },
     getPathName: function() {
-        return this.category + 'List';
+        return this.category.toLowerCase();
     },
     getCapitalizedCategory: function() {
         var cat = this.category;

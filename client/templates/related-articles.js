@@ -24,10 +24,6 @@ Template.relatedArticles.events({
     'click .card-short': function(e) {
         scrollToTop();
         setTimeout(function() {
-            //check for addthis buttons
-            if($('.addthis_sharing_toolbox').children().length === 0 && addthis && addthis.layers) {
-                addthis.layers.refresh();
-            }
             try {
                 FB.XFBML.parse();
             } catch(e) {

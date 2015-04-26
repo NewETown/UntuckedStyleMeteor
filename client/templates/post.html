@@ -7,7 +7,7 @@
                     <h1>{{title}}</h1>
                     <div class="row divider-row">
                         <div class="col-md-6 col-sm-6 col-xs-7">
-                            <p class="author-row">{{author}} in <a href="{{pathFor route=getPathName}}">{{getCapitalizedCategory}}</a></p>
+                            <p class="author-row">{{author}} in <a data-category="{{category}}" href="{{pathFor route=getPathName}}">{{getCapitalizedCategory}}</a></p>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-5">
                             <p class="author-row text-right">{{formatDate}}</p>
@@ -17,7 +17,7 @@
                 <div class="long-card-content" style="margin-top: 10px;">
                     {{{content}}}
                 </div>
-                {{> addthisSharebox}}
+                {{> shareBox}}
             </div>
         </div>
         <div class="row">
